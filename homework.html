@@ -1,0 +1,181 @@
+<html>
+<head>
+	<title> homework </title>
+	<link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+	<!-- JS -->   
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	
+	<style>
+		* {
+			font-family: 'Stylish', sans-serif;
+		}
+
+		.wrap{
+			width:600px;
+			margin: 0 auto 0 auto;}
+
+			#container_1 {
+				width: 940px;
+				margin: 0px auto;
+				padding: 100px;
+				border: 1px solid #bcbcbc;
+				text-align: center;
+			}
+			#container_2 {
+				width: 300px;
+				margin: 0px;
+				padding: 10px;
+				border: 1px solid #bcbcbc;
+				border-radius: .3rem;
+				text-align: center;		
+			}
+			#container_3 {
+				width: 300px;
+				margin: 0px;
+				padding: 10px;
+				border: 1px solid #bcbcbc;
+				border-radius: .3rem;
+				text-align: center;		
+			}
+			#container_4 {
+				width: 300px;
+				margin: 0px;
+				padding: 10px;
+				border: 1px solid #bcbcbc;
+				border-radius: .3rem;
+				text-align: center;		
+			}
+			#usernumber {
+				width: 300px;
+				margin: auto;
+				padding: 10px;
+				border: 1px solid #bcbcbc;
+				border-radius: .3rem;
+				text-align: center;
+
+			}
+
+			#mybtn{
+				width: 300px;
+				margin: 0 auto;
+				padding: 10px;
+				border: 1px solid #bcbcbc;
+				border-radius: .3rem;
+				text-align: center;
+				color: blue;
+			}
+
+			.orders{
+				margin-top: 100px
+			}
+
+			.form-post {
+				max-width: 600px;
+				padding: 1rem;
+				margin: 1rem auto;
+				border-color: "blue"
+				border-radius: 0.2rem;
+				border: groove;
+				display: block;
+			}
+
+
+			
+		</style>
+		<script>
+			function q1() {
+				$('#names-q1').html('');
+				$.ajax({
+					type: "GET",
+					url: "http://spartacodingclub.shop/order",
+					data: {},
+					success: function(response){
+						let rows = response["orders"]["row"];
+						for (let i = 0; i < rows.length; i++) {
+							let name = rows[i]['container_2'];
+							let count = rows[i]['usernumber'];
+							let address = rows[i]['address'];
+							let phone_number = rows[i]['phone_number'];
+							let temp_html = '<tr>\
+							<td>'+name+'</td>\
+							<td>'+count+'</td>\
+							<td>'+address+'</td>\
+							<td>'+phone_number+'</td>\
+							</tr>'
+							$('#names-q1').append(temp_html);
+						}
+					}
+				})
+			}
+		</script>
+
+		<body>
+			<div class="wrap">
+
+				<div class="form-post">
+					<img class="shoe" src="https://vignette.wikia.nocookie.net/pixar/images/5/5e/WALL-E_plant1.jpg/revision/latest?cb=20111229205206" alt="shoe">
+					<div class="card-body ff">
+						<center><h1 class="card-title ff">Plant with the shoe</h1></center>
+						<div style="float:right;"><p class="card-text f1">Price : 9,000,000,000,000 won / per </p></div>
+
+					</div>
+
+
+				</div>
+				<p></p>
+				<hr size="100px" color="purple"></hr>
+				<p align="center">Finding the Silver lining</p>
+				<hr size="100px" color="purple"></hr>
+
+				<div> <h1> Order Request </h1> </p>
+					Customer Name : <input id="container_2">  </p>
+
+
+					<div>
+						Quantity : <input type="number" min="1" max="5" id="usernumber" name="usernumber">
+						<form class="frm" action="action.jsp"> </p> </form></div>
+
+
+						Address : <input id="container_3"> </p>
+						Phone number : <input id="container_4"> </p>
+						<p></p>
+						<hr size="100px" color="purple"></hr>
+						<center> <button id="mybtn" onclick="q1()">Buy Now</button></center> 
+						<div class="orders" id="names-q1">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Customer name</th>
+									<th scope="col">Quantit</th>
+									<th scope="col">Address</th>
+									<th scope="col">Phone number</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">1</th>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+								</tr>
+								<tr>
+									<th scope="row">2</th>
+									<td>Jacob</td>
+									<td>Thornton</td>
+									<td>@fat</td>
+								</tr>
+								<tr>
+									<th scope="row">3</th>
+									<td>Larry</td>
+									<td>the Bird</td>
+									<td>@twitter</td>
+								</tr>
+							</tbody>
+						</table></div>
+					</body>
+					</html>
